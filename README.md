@@ -1,59 +1,122 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Accessory Pop-up Shop Storefront Website and Management System 
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Description
 
-## About Laravel
+An in-depth paragraph about your project and overview of use.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Getting Started
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Dependencies
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+The following dependencies are required to run the system:
 
-## Learning Laravel
+- [PHP 8.5.2+, Laravel Framework 12.48.1+, Composer 2.9.4+](https://php.new)
+- Local Server Environment Software (preferably [Laragon](https://laragon.org/download))
+- [Commitizen](https://github.com/commitizen/cz-cli)
+- [NodeJS](https://nodejs.org/en/download) & [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) (for frontend development)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Installing
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Make sure all dependencies are installed.**
 
-## Laravel Sponsors
+1. Clone the repository 
+```
+git clone https://github.com/b-chua-student/webdev-endterm.git
+cd webdev-endterm
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2. Install PHP dependencies 
+```
+composer install
+```
 
-### Premium Partners
+3. Install Frontend dependencies
+```
+npm install
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+4. Create local environment setup  
+```
+cp .env.example .env
+php artisan key:generate
+```
 
-## Contributing
+5. Initialize the database
+```
+php artisan migrate --seed
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Development
 
-## Code of Conduct
+This project uses Commitizen to maintain a clean git history and automate changelogs.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- Instead of `git commit`, use:
+```
+cz
+```
 
-## Security Vulnerabilities
+This project uses different development servers depending on workflow
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- For **frontend development ONLY**, use:
+```
+npm run dev
+```
+- If workflow **INCLUDES backend development**, use:
+```
+composer run dev
+```
 
-## License
+=======
+### Branching Strategy
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project uses the [GitHub Flow](https://git-flow.sh/workflows/github-flow/) branching strategy. When making a change, developers create a new short-lived, descriptive branches from the `main` branch and then merge changes when the `pull request` is reviewed and approved. **NEVER COMMIT TO THE MAIN BRANCH** to ensure `main` is always stable. Branch names start with the branch type, following [Conventional Commmit specification](https://www.conventionalcommits.org/en/v1.0.0/), followed by branch description separated by hyphens. 
+
+- For example:
+```
+feat/add-login-system
+```
+
+The branch types are as follows:
+- Core
+    - feat: Use when adding new functionality.
+    - fix: Use for correcting bugs or broken logic.
+    - style: Use for changes that do not affect the meaning of the code.
+    - refactor: Use for code changes that neither fix a bug nor add a feature, but improve the code structure.
+    - build: Use for changes that affect the build system or external dependencies.
+    - perf: Use for code changes that specifically improve execution speed or reduce resource usage.
+- Supplemental (the app can still run locally without these)
+    - ci: Use for changes to your Continuous Integration configuration files and scripts.
+    - docs: Use for updates to the README.md, design documents, or inline code comments.
+    - test: Use when adding missing tests or correcting existing ones.
+    - chore: Use for routine tasks that don't modify source or test files, such as updating .gitignore, renaming files, or managing dependencies via npm or composer.
+    - revert: Use specifically to undo a previous commit (when using `git revert`).
+
+### Development
+
+This project uses Commitizen to maintain a clean git history and automate changelogs.
+
+- Instead of `git commit`, use:
+```
+cz
+```
+
+and quit Commitizen with: 
+```
+Ctrl + c
+```
+
+This project uses different development servers depending on workflow
+
+- For **frontend development ONLY**, use:
+```
+npm run dev
+```
+- If workflow **INCLUDES backend development**, use:
+```
+composer run dev
+```
+
+## Changelog 
+
+* 0.1
+    * Initial Release
