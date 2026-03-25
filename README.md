@@ -66,7 +66,6 @@ npm run dev
 composer run dev
 ```
 
-=======
 ### Branching Strategy
 
 This project uses the [GitHub Flow](https://git-flow.sh/workflows/github-flow/) branching strategy. When making a change, developers create a new short-lived, descriptive branches from the `main` branch and then merge changes when the `pull request` is reviewed and approved. **NEVER COMMIT TO THE MAIN BRANCH** to ensure `main` is always stable. Branch names start with the branch type, following [Conventional Commmit specification](https://www.conventionalcommits.org/en/v1.0.0/), followed by branch description separated by hyphens. 
