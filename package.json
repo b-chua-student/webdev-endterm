@@ -9,6 +9,8 @@
     "test": "echo \"No tests specified\" && exit 0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
     "@tailwindcss/vite": "^4.0.0",
     "axios": "^1.11.0",
     "concurrently": "^9.0.1",
