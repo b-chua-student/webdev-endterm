@@ -5,8 +5,8 @@
   "scripts": {
     "build": "vite build",
     "dev": "vite",
-    "prepare": "husky"
-    "test": "echo \"No tests specified\" && exit 0",
+    "prepare": "husky",
+    "test": "echo \"No tests specified\" && exit 0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.0",
