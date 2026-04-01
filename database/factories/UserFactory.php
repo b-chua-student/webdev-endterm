@@ -36,10 +36,27 @@ class UserFactory extends Factory
     /**
      * Indicate that the model's email address should be unverified.
      */
-    public function unverified(): static
+    public function create_admin(): static
     {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
+        return $this->state(fn () => ['role' => 'admin']);
+    }
+
+    public function create_user(): static
+    {
+        return $this->state(fn () => ['role' => 'user']);
+    }
+
+    public function create_guest(): static
+    {
+        return $this->state(fn () => [
+            'first_name'        => '',
+            'last_name'         => '',
+            'email'             => 'guest@guest',
+            'instagram_account' => '',
+            'address'           => '',
+            'role'              => 'guest',
+            'password'          => Hash::make('password'),
+            'remember_token'    => '',
         ]);
     }
 }
