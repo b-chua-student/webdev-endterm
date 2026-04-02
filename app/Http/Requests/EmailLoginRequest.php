@@ -23,7 +23,7 @@ class EmailLoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email'      => 'required|email',
+            'email'      => 'required|email|not_in:guest@guest',
             'password'   => 'required|min:8',
         ];
     }
