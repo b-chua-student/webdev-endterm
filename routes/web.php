@@ -8,12 +8,11 @@ Route::get('/', function () {
 });
 
 Route::get('login', fn () => view('login'))
-    ->name('login')
-    ->middleware('guest');
+    ->name('login');
 
 Route::post('login', [AuthController::class, 'loginByEmail'])
     ->name('login-user')
-    ->middleware(['guest', 'throttle:10,1']);
+    ->middleware(['throttle:10,1']);
 
 Route::post('login-guest', [AuthController::class, 'loginAsGuest'])->name('login-guest');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
