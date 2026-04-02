@@ -8,5 +8,4 @@ interface AuthServiceInterface
 {
     public function loginByEmail(array $data) : bool;
     public function loginByInstagram(array $data) : bool;
-    public function loginAsGuest() : bool;
 }
