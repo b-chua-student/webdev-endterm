@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form method="POST" action="{{ route('login') }}">
+<form method="POST" action="{{ route('login-user') }}">
     @csrf
     <label for="email">Email</label>
     <input type="email" id="email" name="email">
