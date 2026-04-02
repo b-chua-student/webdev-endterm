@@ -1,7 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+
+Route::post('login', [AuthControllerInterface::class, 'loginByEmail'])->name('login');
+Route::post('login-guest', [AuthControllerInterface::class, 'loginAsGuest'])->name('login-guest');
+
+Route::get('home', fn () => view('home'))->name('home');
