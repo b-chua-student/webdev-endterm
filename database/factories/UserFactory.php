@@ -42,12 +42,18 @@ class UserFactory extends Factory
      */
     public function create_admin(): static
     {
-        return $this->state(fn () => ['role' => 'admin']);
+        return $this->state(fn () => [
+            'email' => 'admin@admin',
+            'role' => 'admin'
+        ]);
     }
 
     public function create_user(): static
     {
-        return $this->state(fn () => ['role' => 'user']);
+        return $this->state(fn () => [
+            'email' => 'user@user',
+            'role' => 'user'
+        ]);
     }
 
     public function create_guest(): static
