@@ -7,8 +7,12 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('login', fn () => view('login'))
-    ->name('login');
+Route::get('login', fn () => response()->view('login')->withHeaders([
+    'Cache-Control' => 'no-store, no-cache, must-revalidate',
+    'Expires' => '0',
+    ]))
+    ->name('login')
+    ->middleware('guest');
 
 Route::post('login', [AuthController::class, 'loginByEmail'])
     ->name('login-user')
@@ -17,4 +21,9 @@ Route::post('login', [AuthController::class, 'loginByEmail'])
 Route::post('login-guest', [AuthController::class, 'loginAsGuest'])->name('login-guest');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('home', fn () => view('home'))->name('home');
+Route::get('home', fn () => response()->view('home')->withHeaders([
+    'Cache-Control' => 'no-store, no-cache, must-revalidate',
+    'Expires'       => '0',
+]))
+    ->name('home')
+    ->middleware('auth');
