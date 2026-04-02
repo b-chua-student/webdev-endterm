@@ -14,10 +14,10 @@ class AuthController extends Controller
     ) {}
 
     // Type-hint EmailLoginRequest to pass request through Request Form
-    public function loginByEmail(EmailLoginRequest $userCredentials)
+    public function loginByEmail(EmailLoginRequest $request)
     {
         // Return the data passed through the Form Request
-        $validatedUserCredentials = $userCredentials->validated();
+        $validatedUserCredentials = $request->validated();
 
         // Pass in the validated data to the Service function
         $loginIsSuccess = $this->authService->loginByEmail($validatedUserCredentials);
