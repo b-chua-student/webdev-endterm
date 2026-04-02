@@ -7,6 +7,10 @@ Route::get('/', function () {
     return view('login');
 });
 
+Route::get('login', fn () => view('login'))
+    ->name('login')
+    ->middleware('guest');
+
 Route::post('login', [AuthController::class, 'loginByEmail'])
     ->name('login-user')
     ->middleware(['guest', 'throttle:10,1']);
