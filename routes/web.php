@@ -8,8 +8,9 @@ Route::get('/', function () {
 });
 
 Route::post('login', [AuthController::class, 'loginByEmail'])
-    ->name('login')
+    ->name('login-user')
     ->middleware(['guest', 'throttle:10,1']);
+
 Route::post('login-guest', [AuthController::class, 'loginAsGuest'])->name('login-guest');
 
 Route::get('home', fn () => view('home'))->name('home');
