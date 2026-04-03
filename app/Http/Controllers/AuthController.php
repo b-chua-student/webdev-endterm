@@ -44,4 +44,10 @@ class AuthController extends Controller
         else
             return back()->withErrors(['invalid' => 'Invalid credentials.']);
     }
+
+    public function logout(Request $request)
+    {
+        $this->authService->logout($request);
+        return redirect()->route('login');
+    }
 }
