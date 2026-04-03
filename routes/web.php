@@ -27,3 +27,5 @@ Route::get('home', fn () => response()->view('home')->withHeaders([
 ]))
     ->name('home')
     ->middleware('auth');
+
+Route::fallback(fn () => redirect()->route('login'));
