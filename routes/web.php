@@ -15,6 +15,5 @@ Route::post('login', [AuthController::class, 'loginByEmail'])
     ->middleware(['throttle:10,1']);
 
 Route::post('login-guest', [AuthController::class, 'loginAsGuest'])->name('login-guest');
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('home', fn () => view('home'))->name('home');
