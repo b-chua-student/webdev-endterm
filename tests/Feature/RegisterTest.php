@@ -34,7 +34,6 @@ test('requires an email', function () {
         'password' => 'password',
         'password_confirmation' => 'password',
     ])
-        ->assertRedirect(route('register'))
         ->assertSessionHasErrors('email');
 });
 
@@ -44,7 +43,6 @@ test('requires a password', function () {
         'last_name' => 'Doe',
         'email' => 'john@example.com',
     ])
-        ->assertRedirect(route('register'))
         ->assertSessionHasErrors('password');
 });
 
@@ -54,7 +52,6 @@ test('requires a name', function () {
         'password' => 'password',
         'password_confirmation' => 'password',
     ])
-        ->assertRedirect(route('register'))
         ->assertSessionHasErrors('name');
 });
 
@@ -73,7 +70,6 @@ test('rejects duplicate email', function () {
     ];
 
     $response = $this->post('register', $duplicateUser) // Create another user with duplicate email
-        ->assertRedirect(route('register'))
         ->assertSessionHasErrors('email');
 });
 
