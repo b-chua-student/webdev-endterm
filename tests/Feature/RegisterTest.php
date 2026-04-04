@@ -57,11 +57,20 @@ test('requires a password', function () {
 
 test('requires a name', function () {
     $response = $this->post('register', [
+        'first_name' => 'John',
         'email' => 'john@example.com',
         'password' => 'password',
         'password_confirmation' => 'password',
     ])
-        ->assertSessionHasErrors('name');
+        ->assertSessionHasErrors('last_name');
+
+    $response = $this->post('register', [
+        'last_name' => 'Doe',
+        'email' => 'john@example.com',
+        'password' => 'password',
+        'password_confirmation' => 'password',
+    ])
+        ->assertSessionHasErrors('first_name');
 });
 
 test('rejects duplicate email', function () {
