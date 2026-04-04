@@ -42,6 +42,15 @@ test('requires a password', function () {
         'first_name' => 'John',
         'last_name' => 'Doe',
         'email' => 'john@example.com',
+        'password' => 'password',
+    ])
+        ->assertSessionHasErrors('password');
+
+    $response = $this->post('register', [
+        'first_name' => 'John',
+        'last_name' => 'Doe',
+        'email' => 'john@example.com',
+        'password_confirmation' => 'password',
     ])
         ->assertSessionHasErrors('password');
 });
