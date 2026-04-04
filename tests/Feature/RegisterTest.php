@@ -1,0 +1,99 @@
+<?php
+
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+pest()->uses(RefreshDatabase::class);
+
+beforeEach(function () {
+    $this->validUserData = [
+        'first_name' => 'John',
+        'last_name' => 'Doe',
+        'email' => 'john@example.com',
+        'password' => 'password123',
+        'password_confirmation' => 'password123',
+    ];
+});
+
+test('registers a user with valid data', function () {
+    $response = $this->post('register', $this->validUserData)
+        ->assertRedirect(route('home'))
+        ->assertDatabaseHas('users', ['email' => 'john@example.com']);
+});
+
+test('requires an email', function () {
+    $response = $this->post('register', [
+        'first_name' => 'John',
+        'last_name' => 'Doe',
+        'password' => 'password123',
+        'password_confirmation' => 'password123',
+    ])
+        ->assertRedirect(route('register'))
+        ->assertSessionHasErrors('email');
+});
+
+test('requires a password', function () {
+    $response = $this->post('register', [
+        'first_name' => 'John',
+        'last_name' => 'Doe',
+        'email' => 'john@example.com',
+    ])
+        ->assertRedirect(route('register'))
+        ->assertSessionHasErrors('password');
+});
+
+test('requires a name', function () {
+    $response = $this->post('register', [
+        'email' => 'john@example.com',
+        'password' => 'password123',
+        'password_confirmation' => 'password123',
+    ])
+        ->assertRedirect(route('register'))
+        ->assertSessionHasErrors('name');
+});
+
+test('rejects duplicate email', function () {
+
+    // Both data is valid but has duplicate email
+
+    $response = $this->post('register', $this->validUserData); // Create new user
+
+    $duplicateUser = [
+        'first_name' => 'Jonathan',
+        'last_name' => 'Dela Cruz',
+        'email' => 'john@example.com',
+        'password' => 'password123',
+        'password_confirmation' => 'password123',
+    ];
+
+    $response = $this->post('register', $duplicateUser) // Create another user with duplicate email
+        ->assertRedirect(route('register'))
+        ->assertSessionHasErrors('email');
+});
+
+test('hashes the password', function () {
+    $response = $this->post('register', $this->validUserData);
+
+    $user = User::where('email', 'john@example.com')->first();
+
+    expect(Hash::check('password123', $user->password))->toBeTrue();
+});
+
+test('sends a verification email', function () {
+    Notification::fake();
+
+    $this->post('/register', [
+        'first_name' => 'John',
+        'last_name'  => 'Doe',
+        'email'      => 'john@example.com',
+        'password'   => 'password123',
+        'password_confirmation' => 'password123',
+    ]);
+
+    $user = User::where('email', 'john@example.com')->first();
+
+    Notification::assertSentTo($user, VerifyEmail::class);
+});
