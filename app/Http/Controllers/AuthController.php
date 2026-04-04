@@ -56,7 +56,7 @@ class AuthController extends Controller
     public function register(EmailRegisterRequest $request)
     {
         $validated = $request->validated();
-        $isUserCreated = $this->authService->registerByEmail($validated);
+        $isUserCreated = $this->authService->createUser($validated);
 
         if ($isUserCreated instanceof User ) {
             $this->authService->loginByEmail([
