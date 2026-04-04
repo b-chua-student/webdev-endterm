@@ -13,8 +13,8 @@ beforeEach(function () {
         'first_name' => 'John',
         'last_name' => 'Doe',
         'email' => 'john@example.com',
-        'password' => 'password123',
-        'password_confirmation' => 'password123',
+        'password' => 'password',
+        'password_confirmation' => 'password',
     ];
 });
 
@@ -28,8 +28,8 @@ test('requires an email', function () {
     $response = $this->post('register', [
         'first_name' => 'John',
         'last_name' => 'Doe',
-        'password' => 'password123',
-        'password_confirmation' => 'password123',
+        'password' => 'password',
+        'password_confirmation' => 'password',
     ])
         ->assertRedirect(route('register'))
         ->assertSessionHasErrors('email');
@@ -48,8 +48,8 @@ test('requires a password', function () {
 test('requires a name', function () {
     $response = $this->post('register', [
         'email' => 'john@example.com',
-        'password' => 'password123',
-        'password_confirmation' => 'password123',
+        'password' => 'password',
+        'password_confirmation' => 'password',
     ])
         ->assertRedirect(route('register'))
         ->assertSessionHasErrors('name');
@@ -65,8 +65,8 @@ test('rejects duplicate email', function () {
         'first_name' => 'Jonathan',
         'last_name' => 'Dela Cruz',
         'email' => 'john@example.com',
-        'password' => 'password123',
-        'password_confirmation' => 'password123',
+        'password' => 'password',
+        'password_confirmation' => 'password',
     ];
 
     $response = $this->post('register', $duplicateUser) // Create another user with duplicate email
@@ -79,7 +79,7 @@ test('hashes the password', function () {
 
     $user = User::where('email', 'john@example.com')->first();
 
-    expect(Hash::check('password123', $user->password))->toBeTrue();
+    expect(Hash::check('password', $user->password))->toBeTrue();
 });
 
 test('sends a verification email', function () {
@@ -89,8 +89,8 @@ test('sends a verification email', function () {
         'first_name' => 'John',
         'last_name'  => 'Doe',
         'email'      => 'john@example.com',
-        'password'   => 'password123',
-        'password_confirmation' => 'password123',
+        'password'   => 'password',
+        'password_confirmation' => 'password',
     ]);
 
     $user = User::where('email', 'john@example.com')->first();
