@@ -96,3 +96,10 @@ test('sends a verification email', function () {
 
     Notification::assertSentTo($user, VerifyEmail::class);
 });
+
+test('created user is immediately logged in', function () {
+    $response = $this->post('register', $this->validUserData)
+        ->assertRedirect(route('home'));
+
+    $this->assertAuthenticated();
+});
