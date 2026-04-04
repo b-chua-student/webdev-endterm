@@ -20,8 +20,11 @@ beforeEach(function () {
 
 test('registers a user with valid data', function () {
     $response = $this->post('register', $this->validUserData)
-        ->assertRedirect(route('home'))
-        ->assertDatabaseHas('users', ['email' => 'john@example.com']);
+        ->assertRedirect(route('home'));
+
+    $this->assertDatabaseHas('users', [
+            'email' => 'john@example.com'
+        ]);
 });
 
 test('requires an email', function () {
