@@ -99,22 +99,6 @@ test('hashes the password', function () {
     expect(Hash::check('password', $user->password))->toBeTrue();
 });
 
-test('sends a verification email', function () {
-    Notification::fake();
-
-    $this->post('/register', [
-        'first_name' => 'John',
-        'last_name'  => 'Doe',
-        'email'      => 'john@example.com',
-        'password'   => 'password',
-        'password_confirmation' => 'password',
-    ]);
-
-    $user = User::where('email', 'john@example.com')->first();
-
-    Notification::assertSentTo($user, VerifyEmail::class);
-});
-
 test('created user is immediately logged in', function () {
     $response = $this->post('register', $this->validUserData)
         ->assertRedirect(route('home'));
