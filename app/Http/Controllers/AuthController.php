@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\EmailLoginRequest;
+use App\Http\Requests\EmailRegisterRequest;
 use App\Contracts\Services\AuthServiceInterface;
 
 class AuthController extends Controller
@@ -49,5 +51,22 @@ class AuthController extends Controller
     {
         $this->authService->logout($request);
         return redirect()->route('login');
+    }
+
+    public function register(EmailRegisterRequest $request)
+    {
+        $validated = $request->validated();
+        $isUserCreated = $this->authService->createUser($validated);
+
+        if ($isUserCreated instanceof User ) {
+            $this->authService->loginByEmail([
+                'email'    => $validated['email'],
+                'password' => $validated['password'],
+            ]);
+            return redirect()->route('home');
+        } else
+        {
+            return back();
+        }
     }
 }

@@ -7,6 +7,17 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
+Route::get('register', fn () => response()->view('register')->withHeaders([
+    'Cache-Control' => 'no-store, no-cache, must-revalidate',
+    'Expires' => '0',
+    ]))
+    ->name('register')
+    ->middleware('guest');
+
+Route::post('register', [AuthController::class, 'register'])
+    ->name('register-with-email')
+    ->middleware(['throttle:10,1']);
+
 Route::get('login', fn () => response()->view('login')->withHeaders([
     'Cache-Control' => 'no-store, no-cache, must-revalidate',
     'Expires' => '0',

@@ -18,6 +18,8 @@
     <button type="submit">Login As Guest</button>
 </form>
 
+<a href="{{ route('register') }}">No Account? Sign Up</a>
+
 @if ($errors->any())
     <ul>
         @foreach ($errors->all() as $error)
