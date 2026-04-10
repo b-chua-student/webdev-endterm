@@ -8,6 +8,7 @@
   <link rel="icon" href="favicon.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="{{ asset('css/components/style.css') }}">
+  @vite(['resources/css/app.css'])
 </head>
 <body>
     @yield('content')
