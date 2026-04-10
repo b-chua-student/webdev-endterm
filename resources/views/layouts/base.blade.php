@@ -11,7 +11,11 @@
   @vite(['resources/css/app.css'])
 </head>
 <body>
+    <x-navbar />
+
     @yield('content')
+
+    <x-footer />
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" />
 </body>
