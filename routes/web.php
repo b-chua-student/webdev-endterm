@@ -39,4 +39,6 @@ Route::get('home', fn () => response()->view('home')->withHeaders([
     ->name('home')
     ->middleware('auth');
 
+Route::get('components', fn () => view('tests.components'))->name('components');
+
 Route::fallback(fn () => redirect()->route('login'));
