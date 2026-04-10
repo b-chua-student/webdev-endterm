@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\DiscountController;
+use App\Http\Controllers\Admin\AdminController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -41,10 +44,14 @@ Route::get('home', fn () => response()->view('home')->withHeaders([
     ->name('home')
     ->middleware('auth');
 
-Route::fallback(fn () => redirect()->route('login'));
 
 
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+
+// All Admin Management Routes
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    
+
+    Route::get('dashboard', [AdminController::class, 'index'])->name('dashboard');
     // Category Routes
     Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
     Route::post('categories', [CategoryController::class, 'store'])->name('categories.store');
@@ -52,5 +59,21 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
     // Product Routes 
     Route::get('products', [ProductController::class, 'index'])->name('products.index');
+    Route::get('products/create', [ProductController::class, 'create'])->name('products.create'); // ADD THIS
     Route::post('products', [ProductController::class, 'store'])->name('products.store');
+    Route::get('products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit'); // ADD THIS
+    Route::put('products/{id}', [ProductController::class, 'update'])->name('products.update');
+
+    // Order Management Routes 
+    Route::get('orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('orders/{id}', [OrderController::class, 'show'])->name('orders.show');
+    Route::patch('orders/{id}/status', [OrderController::class, 'update'])->name('orders.update-status');
+    
+    // Discount
+    Route::get('discounts', [DiscountController::class, 'index'])->name('discounts.index');
+    Route::get('discounts/create', [DiscountController::class, 'create'])->name('discounts.create');
+    Route::post('discounts', [DiscountController::class, 'store'])->name('discounts.store');
+    Route::patch('discounts/{id}/toggle', [DiscountController::class, 'toggle'])->name('discounts.toggle');
 });
+
+Route::fallback(fn () => redirect()->route('login'));

@@ -39,7 +39,6 @@ class ProductService
         foreach ($images as $index => $image) {
             $filename = time() . '_' . $index . '.' . $image->extension();
             
-            // For now, store them in the paths defined in your data dictionary.
             $product->images()->create([
                 'url_large'  => $image->storeAs('products/large', $filename, 'public'),
                 'url_medium' => $image->storeAs('products/medium', $filename, 'public'),
