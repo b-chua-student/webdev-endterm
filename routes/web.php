@@ -7,7 +7,7 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('register', fn () => response()->view('register')->withHeaders([
+Route::get('register', fn () => response()->view('tests.register')->withHeaders([
     'Cache-Control' => 'no-store, no-cache, must-revalidate',
     'Expires' => '0',
     ]))
@@ -18,7 +18,7 @@ Route::post('register', [AuthController::class, 'register'])
     ->name('register-with-email')
     ->middleware(['throttle:10,1']);
 
-Route::get('login', fn () => response()->view('login')->withHeaders([
+Route::get('login', fn () => response()->view('tests.login')->withHeaders([
     'Cache-Control' => 'no-store, no-cache, must-revalidate',
     'Expires' => '0',
     ]))
@@ -32,7 +32,7 @@ Route::post('login', [AuthController::class, 'loginByEmail'])
 Route::post('login-guest', [AuthController::class, 'loginAsGuest'])->name('login-guest');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('home', fn () => response()->view('home')->withHeaders([
+Route::get('home', fn () => response()->view('tests.home')->withHeaders([
     'Cache-Control' => 'no-store, no-cache, must-revalidate',
     'Expires'       => '0',
 ]))
