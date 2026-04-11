@@ -45,4 +45,4 @@ Route::fallback(fn () => redirect()->route('login'));
 
 // Routes for testing views
 
-Route::get('home', fn() => view('home'))->name('test-home');
+Route::get('test-home', fn() => view('home'));
