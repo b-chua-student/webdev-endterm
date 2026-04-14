@@ -3,10 +3,19 @@
 @section('title', 'Home')
 
 @section('content')
+    <div class="container-fluid px-0 mb-5">
+        <x-hero-banner />
+    </div>
 
-<x-hero-banner />
-<x-featured />
-<x-category />
-<x-about-us />
+    <div class="container-fluid px-5 mb-5">
+        <x-featured />
+    </div>
 
+    <div class="container-fluid px-0 mb-5">
+        <x-category />
+    </div>
+
+    <div class="container-fluid px-0 mb-5">
+        <x-about-us />
+    </div>
 @endsection
