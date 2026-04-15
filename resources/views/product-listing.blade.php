@@ -12,7 +12,9 @@
             <div class="row g-5">
                 @for ($i = 0; $i < 6; $i++)
                     <div class="col-auto">
-                        <x-product-listing-card />
+                        <a href="{{ route('product-view') }}">
+                            <x-product-listing-card />
+                        </a>
                     </div>
                 @endfor
             </div>
