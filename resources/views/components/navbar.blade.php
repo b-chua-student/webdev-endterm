@@ -6,7 +6,7 @@
     </a>
 
     <div class="d-flex">
-      <a href="" class="text-white text-decoration-none px-3">Home</a>
+      <a href="{{ route('home') }}" class="text-white text-decoration-none px-3">Home</a>
       <a href="" class="text-white text-decoration-none px-3">Products</a>
       <a href="" class="text-white text-decoration-none px-3">About Us</a>
       <a href="" class="text-white text-decoration-none px-3">FAQ</a>
