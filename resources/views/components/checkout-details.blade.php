@@ -1,46 +1,30 @@
-<div class="text-brand w-50">
-  <p class="fs-1">Checkout</p>
-  <form class="w-100">
-    <div>
-      <p class="fs-5 fw-bold">Personal Information</p>
-      <div class="d-flex gap-2">
-        <div class="d-flex flex-column w-100">
-          <label for="fname" class="fs-6">First Name</label>
-          <input type="text" name="fname" value="placeholder" class="text-brand border-brand rounded-3 p-2 px-4">
-        </div>
-        <div class="d-flex flex-column w-100">
-          <label for="lname" class="fs-6">Last Name</label>
-          <input type="text" name="lname" value="placeholder" class="text-brand border-brand rounded-3 p-2 px-4">
-        </div>
-      </div>
-      <div class="d-flex flex-column w-100">
-        <label for="instagram_account" class="fs-6">Last Name</label>
-        <input type="text" name="instagram_account" value="placeholder" class="text-brand border-brand rounded-3 p-2 px-4">
-      </div>
-      <div class="d-flex flex-column w-100">
-        <label for="email" class="fs-6">Last Name</label>
-        <input type="text" name="email" value="placeholder" class="text-brand border-brand rounded-3 p-2 px-4">
-      </div>
-      <div class="d-flex flex-column w-100">
-        <label for="phone_no" class="fs-6">Last Name</label>
-        <input type="text" name="phone_no" value="placeholder" class="text-brand border-brand rounded-3 p-2 px-4">
-      </div>
-    </div>
+<div style="color: #700101; font-weight: 600; font-size: 14px; margin-bottom: 20px; text-transform: none;">Personal Information</div>
 
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
     <div>
-      <p class="fs-5 fw-bold">Address</p>
-      <div class="d-flex flex-column w-100">
-        <label for="phone_no" class="fs-6">Region, Province, Barangay</label>
-        <input type="text" name="phone_no" value="placeholder" class="text-brand border-brand rounded-3 p-2 px-4">
-      </div>
-      <div class="d-flex flex-column w-100">
-        <label for="phone_no" class="fs-6">Postal Code</label>
-        <input type="text" name="phone_no" value="placeholder" class="text-brand border-brand rounded-3 p-2 px-4">
-      </div>
-      <div class="d-flex flex-column w-100">
-        <label for="phone_no" class="fs-6">Street Name, Building, House No.</label>
-        <input type="text" name="phone_no" value="placeholder" class="text-brand border-brand rounded-3 p-2 px-4">
-      </div>
-    </div
-  </form>
+        <label style="display: block; font-size: 11px; color: #b1b1b1; margin-bottom: 5px;">First Name</label>
+        <input type="text" placeholder="Placeholder" style="width: 100%; padding: 12px; border: 1px solid #700101; border-radius: 10px; opacity: 0.6;">
+    </div>
+    <div>
+        <label style="display: block; font-size: 11px; color: #b1b1b1; margin-bottom: 5px;">Last Name</label>
+        <input type="text" placeholder="Placeholder" style="width: 100%; padding: 12px; border: 1px solid #700101; border-radius: 10px; opacity: 0.6;">
+    </div>
 </div>
+
+@php $fields = ['Username', 'Instagram Account', 'Email', 'Phone Number']; @endphp
+@foreach($fields as $field)
+<div style="margin-bottom: 20px;">
+    <label style="display: block; font-size: 11px; color: #b1b1b1; margin-bottom: 5px;">{{ $field }}</label>
+    <input type="text" placeholder="Placeholder" style="width: 100%; padding: 12px; border: 1px solid #700101; border-radius: 10px; opacity: 0.6;">
+</div>
+@endforeach
+
+<div style="color: #700101; font-weight: 600; font-size: 14px; margin: 40px 0 20px 0;">Address</div>
+
+@php $addressFields = ['Region, Province, Barangay', 'House Unit', 'Street Name, Building, House No.']; @endphp
+@foreach($addressFields as $field)
+<div style="margin-bottom: 20px;">
+    <label style="display: block; font-size: 11px; color: #b1b1b1; margin-bottom: 5px;">{{ $field }}</label>
+    <input type="text" placeholder="Placeholder" style="width: 100%; padding: 12px; border: 1px solid #700101; border-radius: 10px; opacity: 0.6;">
+</div>
+@endforeach
