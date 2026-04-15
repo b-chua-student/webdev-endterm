@@ -43,4 +43,7 @@ Route::get('components', fn () => view('tests.components'))->name('components');
 
 Route::fallback(fn () => redirect()->route('login'));
 
+// Routes for testing views
+
+Route::get('test-shopping-cart', fn() => view('shopping-cart'));
 Route::get('product-listing', fn () => view('product-listing'))->name('product-listing');
