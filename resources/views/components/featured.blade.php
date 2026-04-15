@@ -1,8 +1,20 @@
 <div class="d-flex overflow-x-auto flex-nowrap">
-  <x-featured-product-card />
-  <x-featured-product-card />
-  <x-featured-product-card />
-  <x-featured-product-card />
-  <x-featured-product-card />
-  <x-featured-product-card />
+  <div class="container-fluid px-2">
+        <x-featured-product-card />
+    </div>
+    <div class="container-fluid px-2">
+        <x-featured-product-card />
+    </div>
+    <div class="container-fluid px-2">
+        <x-featured-product-card />
+    </div>
+    <div class="container-fluid px-2">
+        <x-featured-product-card />
+    </div>
+    <div class="container-fluid px-2">
+        <x-featured-product-card />
+    </div>
+    <div class="container-fluid px-2">
+        <x-featured-product-card />
+    </div>
 </div>
