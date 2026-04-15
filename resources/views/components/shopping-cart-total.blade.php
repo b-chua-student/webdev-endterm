@@ -23,19 +23,22 @@
         <span style="font-size: 32px; font-weight: bold; color: #700101;">₱99.99</span>
     </div>
 
-    <button style="
-        width: 100%; 
-        background-color: #700101; 
-        color: white; 
-        padding: 16px; 
-        border: none; 
-        border-radius: 4px; 
-        font-size: 16px; 
-        font-weight: 600; 
-        cursor: pointer;
-        transition: background-color 0.2s;
-        box-shadow: 0 4px 6px -1px rgba(112, 1, 1, 0.3);
-    " onmouseover="this.style.backgroundColor='#5a0101'" onmouseout="this.style.backgroundColor='#700101'">
-        Proceed to Checkout
-    </button>
+    <form method='POST' action='{{ route('checkout') }}'>
+        @csrf
+        <button style="
+            width: 100%;
+            background-color: #700101;
+            color: white;
+            padding: 16px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            box-shadow: 0 4px 6px -1px rgba(112, 1, 1, 0.3);
+        " onmouseover="this.style.backgroundColor='#5a0101'" onmouseout="this.style.backgroundColor='#700101'">
+            Proceed to Checkout
+        </button>
+    </form>
 </div>
