@@ -14,7 +14,9 @@
 
     <div class="d-flex align-items-center gap-3">
       <img src="{{ asset('img/user-white.svg') }}" style="width: 28px; height: 28px;">
-      <img src="{{ asset('img/cart-white.svg') }}" style="width: 28px; height: 28px;">
+      <a href="{{ route('shopping-cart') }}">
+        <img src="{{ asset('img/cart-white.svg') }}" style="width: 28px; height: 28px;">
+      </a>
     </div>
 
   </div>
