@@ -32,7 +32,7 @@ Route::post('login', [AuthController::class, 'loginByEmail'])
 Route::post('login-guest', [AuthController::class, 'loginAsGuest'])->name('login-guest');
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('home', fn () => response()->view('tests.home')->withHeaders([
+Route::get('home', fn () => response()->view('home')->withHeaders([
     'Cache-Control' => 'no-store, no-cache, must-revalidate',
     'Expires'       => '0',
 ]))
@@ -46,3 +46,5 @@ Route::fallback(fn () => redirect()->route('login'));
 // Routes for testing views
 
 Route::get('product-view', fn () => view('product-view'))->name('product-view');
+Route::get('shopping-cart', fn() => view('shopping-cart'))->name('shopping-cart');
+Route::get('product-listing', fn () => view('product-listing'))->name('product-listing');
