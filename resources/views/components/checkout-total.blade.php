@@ -31,18 +31,21 @@
         <span style="font-size: 22px; font-weight: 700; color: #700101;">Unit Price</span>
     </div>
 
-    <button style="
-        width: 100%; 
-        background-color: #700101; 
-        color: white; 
-        padding: 18px; 
-        border: none; 
-        border-radius: 8px; 
-        font-size: 16px; 
-        font-weight: 600; 
-        cursor: pointer;
-        text-transform: none;
-    ">
-        Proceed to Checkout
-    </button>
+    <form method='POST' action='{{ route('order-confirmation') }}'
+        @csrf
+        <button style="
+            width: 100%;
+            background-color: #700101;
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-transform: none;
+        ">
+        Order Now
+        </button>
+    </form>
 </div>
