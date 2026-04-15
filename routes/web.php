@@ -45,4 +45,4 @@ Route::fallback(fn () => redirect()->route('login'));
 
 // Routes for testing views
 
-Route::get('test-checkout', fn() => view('checkout'));
+Route::get('checkout', fn() => view('checkout'))->name('checkout');
