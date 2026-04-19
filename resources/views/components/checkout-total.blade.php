@@ -31,9 +31,9 @@
         <span style="font-size: 22px; font-weight: 700; color: #700101;">Unit Price</span>
     </div>
 
-    <form method='POST' action='{{ route('order-confirmation') }}'
+    <form method='POST' action='{{ route('order-confirmation') }}'>
         @csrf
-        <button style="
+        <button type='submit' style="
             width: 100%;
             background-color: #700101;
             color: white;
