@@ -7,7 +7,7 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('register', fn () => response()->view('tests.register')->withHeaders([
+Route::get('register', fn () => response()->view('register')->withHeaders([
     'Cache-Control' => 'no-store, no-cache, must-revalidate',
     'Expires' => '0',
     ]))
