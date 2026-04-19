@@ -11,9 +11,9 @@
     <p class="m-0">Unit Price</p>
   </div>
   <div class="d-flex align-items-center justify-content-center gap-3">
-    <button>-</button>
+    <button class="bg-white rounded-circle border-brand text-brand fw-bold" style="width: 32px; height: 32px;">-</button>
     <p class="m-0">1</p>
-    <button>+</button>
+    <button class="bg-white rounded-circle border-brand text-brand fw-bold" style="width: 32px; height: 32px;">+</button>
   </div>
   <div class="d-flex align-items-center justify-content-center">
     <p class="m-0">Total Price</p>
