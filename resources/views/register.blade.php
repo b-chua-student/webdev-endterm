@@ -36,6 +36,14 @@
                     <input name="password_confirmation" id="password-confirmation" type="password" placeholder="********" style="width: 100%; padding: 12px; border: 1px solid #700101; border-radius: 10px; opacity: 0.6;">
                     </div>
 
+                    @if ($errors->any())
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="text-brand">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+
                     <button type="submit" class="rounded-pill text-center text-white bg-brand py-3 fw-bold border-0 w-100">Submit</button>
                 </form>
 
