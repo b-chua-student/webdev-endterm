@@ -36,13 +36,13 @@
                 </form>
 
                 <div>
-                    <p class="w-100 text-center text-muted">Don't have an account yet?
+                    <p class="w-100 text-center text-muted m-0">Don't have an account yet?
                         <a href="{{ route('register') }}" class="text-brand">Sign Up</a>
                     </p>
 
                     <form method='POST' action='{{ route('login-guest') }}'>
                         @csrf
-                        <p class="w-100 text-center text-muted">Or
+                        <p class="w-100 text-center text-muted m-0">Or
                             <button type="submit" class="text-brand border-0 bg-white">Login as Guest</a>
                         </p>
                     </form>
