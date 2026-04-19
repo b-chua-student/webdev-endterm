@@ -24,6 +24,14 @@
                         </div>
                     </div>
 
+                    @if ($errors->any())
+                    <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="text-brand">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+
                     <button type="submit" class="rounded-pill text-center text-white bg-brand py-3 fw-bold border-0 w-100">Submit</button>
                 </form>
 
