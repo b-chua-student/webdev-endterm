@@ -12,8 +12,7 @@
             <div class="row g-5">
                 @foreach ($products as $product)
                     <div class="col-auto">
-                        <a href="{{ route('product-view') }}">
-                            <x-product-listing-card />
+                        <a href="{{ route('product-view', $product->id) }}">
                             <x-product-listing-card
                                 productCategory="{{ $product->category->name }}"
                                 productName="{{ $product->name }}"
