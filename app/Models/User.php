@@ -7,11 +7,12 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -45,6 +46,19 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+        ];
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'first_name'         => $this->first_name,
+            'last_name'          => $this->last_name,
+            'email'              => $this->email,
+            'instagram_account'  => $this->instagram_account,
+            'address'            => $this->address,
+            'role'               => $this->role,
+            'email_verified_at'  => $this->email_verified_at,
         ];
     }
 }
