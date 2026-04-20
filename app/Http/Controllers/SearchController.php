@@ -20,7 +20,7 @@ class SearchController extends Controller
         if ($routeName === 'test-search-users')
         {
             $rv = $this->getUsers($validated); // rv = Return Value
-        } elseif ($routeName === 'test-search-products')
+        } elseif ($routeName === 'test-search-products' || $routeName === 'product-listing' || $routeName === 'search-product')
         {
             $rv = $this->getProducts($validated);
         } elseif ($routeName === 'test-search-orders')
@@ -44,12 +44,19 @@ class SearchController extends Controller
         ];
     }
 
-    public function getProducts (array $validated) {
+    public function getProducts(array $validated)
+    {
         $query = $validated['search'] ?? '';
-        $products = $this->searchService->getProducts($query);
+
+        // Extract min and max price from the validated request data
+        $minPrice = $validated['min_price'] ?? null;
+        $maxPrice = $validated['max_price'] ?? null;
+
+        // Pass all three arguments to your service
+        $products = $this->searchService->getProducts($query, $minPrice, $maxPrice);
 
         return [
-            'view' => 'tests.search',
+            'view' => 'product-listing',
             'data' => compact('products'),
         ];
     }
