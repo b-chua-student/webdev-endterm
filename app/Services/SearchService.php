@@ -11,7 +11,9 @@ class SearchService implements SearchServiceInterface
 {
     public function getUsers(string $query) : Collection
     {
-        return User::search(trim($query))->get();
+        return User::search(trim($query))
+            ->get()
+            ->filter(fn($user) => $user->email !== 'guest@guest'); // exclude displaying the guest account
     }
 
     public function getProducts(string $query) : Collection
