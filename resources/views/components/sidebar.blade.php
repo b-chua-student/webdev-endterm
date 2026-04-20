@@ -17,5 +17,7 @@
         <input type="text" class="form-control form-control-sm" placeholder="₱ Minimum">
         <input type="text" class="form-control form-control-sm" placeholder="₱ Maximum">
     </div>
+
+    <button type="submit" class="rounded-pill bg-brand border border-white w-100 py-2 button-brand-white"> Search </button>
 </form>
 </div>
