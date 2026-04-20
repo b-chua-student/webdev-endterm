@@ -47,8 +47,10 @@ class Product extends Model
 
     public function toSearchableArray()
     {
+        $this->loadMissing('category');
+
         return [
-            'category_id' => $this->category_id,
+            'category'   => $this->category?->name ?? '',
             'name'        => $this->name,
             'description' => $this->description,
             'price'       => (float) $this->price,

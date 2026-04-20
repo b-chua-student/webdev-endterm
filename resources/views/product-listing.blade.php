@@ -10,13 +10,17 @@
     <main class="flex-grow-1 p-5 bg-white">
         <div class="container-fluid">
             <div class="row g-5">
-                @for ($i = 0; $i < 6; $i++)
+                @foreach ($products as $product)
                     <div class="col-auto">
-                        <a href="{{ route('product-view') }}">
-                            <x-product-listing-card />
+                        <a href="{{ route('product-view', $product->id) }}">
+                            <x-product-listing-card
+                                productCategory="{{ $product->category->name }}"
+                                productName="{{ $product->name }}"
+                                productPrice="{{ $product->price }}"
+                            />
                         </a>
                     </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </main>

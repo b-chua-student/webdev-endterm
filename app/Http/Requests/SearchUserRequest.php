@@ -16,6 +16,13 @@ class SearchUserRequest extends FormRequest
         return true;
     }
 
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'min_price' => $this->min_price ?: 0,
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -25,6 +32,8 @@ class SearchUserRequest extends FormRequest
     {
         return [
             'search'       => 'nullable|string|max:255',
+            'min_price' => 'nullable|numeric|min:0',
+            'max_price' => 'nullable|numeric|gte:min_price',
         ];
     }
 }
