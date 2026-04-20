@@ -3,6 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\Order;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -21,5 +24,16 @@ class DatabaseSeeder extends Seeder
         User::factory()->create_admin()->create();
         User::factory()->create_user()->create();
         User::factory()->create_guest()->create();
+
+        Category::factory(4)->sequence(
+            ['name' => 'Beatrice', 'slug' => 'beatrice'],
+            ['name' => 'Arwen', 'slug' => 'arwen'],
+            ['name' => 'Leigh', 'slug' => 'leigh'],
+            ['name' => 'Bloom Bar', 'slug' => 'bloom-bar'],
+        )->create();
+
+        Product::factory(20)->create();
+
+        Order::factory(30)->create();
     }
 }
