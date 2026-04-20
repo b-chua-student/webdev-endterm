@@ -65,4 +65,6 @@ Route::post('order-confirmation', fn() => view ('order-confirmation'))->name('or
 Route::post('checkout', fn() => view('checkout'))->name('checkout');
 Route::get('product-view', fn () => view('product-view'))->name('product-view');
 Route::get('shopping-cart', fn() => view('shopping-cart'))->name('shopping-cart');
-Route::get('product-listing', fn () => view('product-listing'))->name('product-listing');
+
+Route::get('product-listing', [SearchController::class, 'index'])
+    ->name('product-listing');
