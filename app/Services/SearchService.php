@@ -16,9 +16,26 @@ class SearchService implements SearchServiceInterface
             ->filter(fn($user) => $user->email !== 'guest@guest'); // exclude displaying the guest account
     }
 
-    public function getProducts(string $query) : Collection
+    public function getProducts(string $query, ?float $minPrice = null, ?float $maxPrice = null) : Collection
     {
-        return Product::search(trim($query))->get();
+        $term = '%' . trim($query) . '%';
+
+        return Product::query()
+            ->where(function ($q) use ($term) {
+                $q->where('name', 'like', $term)
+                  ->orWhere('description', 'like', $term)
+                  ->orWhereHas('category', function ($categoryQuery) use ($term) {
+                      $categoryQuery->where('name', 'like', $term);
+                  });
+            })
+            ->when($minPrice, function ($q) use ($minPrice) {
+                return $q->where('price', '>=', $minPrice);
+            })
+            ->when($maxPrice, function ($q) use ($maxPrice) {
+                return $q->where('price', '<=', $maxPrice);
+            })
+            ->orderBy('id', 'desc')
+            ->get();
     }
 
     public function getOrders(string $query) : Collection
