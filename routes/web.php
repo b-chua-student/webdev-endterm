@@ -68,3 +68,6 @@ Route::get('shopping-cart', fn() => view('shopping-cart'))->name('shopping-cart'
 
 Route::get('product-listing', [SearchController::class, 'index'])
     ->name('product-listing');
+
+Route::post('search-product', [SearchController::class, 'index'])
+    ->name('search-product');
