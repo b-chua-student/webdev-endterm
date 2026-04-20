@@ -8,6 +8,8 @@
 <ul>
     @foreach($users as $user)
     <li>{{ $user->first_name }} {{ $user->last_name }}</li>
+    <li>{{ $user->email }}</li>
+    ----------
     @endforeach
 </ul>
 @endisset
