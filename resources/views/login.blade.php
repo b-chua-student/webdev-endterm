@@ -5,7 +5,7 @@
 @section('content')
     <div class="d-flex flex-row min-vh-100">
         <div class="w-50 bg-brand min-vh-100 d-flex justify-content-center align-items-center">
-            <img src="{{ asset('img/bethebeau.png') }}" alt="">
+            <img src="{{ asset('img/bethebeau-horizontal.png') }}" alt="">
         </div>
         <div class="w-50 min-vh-100 d-flex justify-content-center align-items-center">
             <div class="w-50 d-flex flex-column gap-5">
