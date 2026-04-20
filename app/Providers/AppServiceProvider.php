@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Contracts\Services\AuthServiceInterface;
 use App\Services\AuthService;
+use App\Contracts\Services\SearchServiceInterface;
+use App\Services\SearchService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -16,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         $this->app->bind(AuthServiceInterface::class, AuthService::class);
+        $this->app->bind(SearchServiceInterface::class, SearchService::class);
     }
 
     /**

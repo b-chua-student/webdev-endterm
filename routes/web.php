@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SearchController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -40,6 +41,21 @@ Route::get('home', fn () => response()->view('home')->withHeaders([
     ->middleware('auth');
 
 Route::get('components', fn () => view('tests.components'))->name('components');
+
+Route::get('test-search-products', [SearchController::class, 'index'])
+    ->name('test-search-products');
+Route::post('test-search-products', [SearchController::class, 'index'])
+    ->name('test-search-products');
+
+Route::get('test-search-orders', [SearchController::class, 'index'])
+    ->name('test-search-orders');
+Route::post('test-search-orders', [SearchController::class, 'index'])
+    ->name('test-search-orders');
+
+Route::get('test-search-users', [SearchController::class, 'index'])
+    ->name('test-search-users');
+Route::post('test-search-users', [SearchController::class, 'index'])
+    ->name('test-search-users');
 
 Route::fallback(fn () => redirect()->route('login'));
 
