@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\ProductController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -63,7 +64,10 @@ Route::fallback(fn () => redirect()->route('login'));
 
 Route::post('order-confirmation', fn() => view ('order-confirmation'))->name('order-confirmation');
 Route::post('checkout', fn() => view('checkout'))->name('checkout');
-Route::get('product-view', fn () => view('product-view'))->name('product-view');
+
+Route::get('product-view/{id}', [ProductController::class, 'index'])
+    ->name('product-view');
+
 Route::get('shopping-cart', fn() => view('shopping-cart'))->name('shopping-cart');
 
 Route::get('product-listing', [SearchController::class, 'index'])
