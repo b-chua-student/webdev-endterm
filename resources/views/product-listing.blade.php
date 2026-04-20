@@ -4,7 +4,7 @@
 <div class="d-flex w-100 min-vh-100">
 
     <aside class="flex-shrink-0" style="width: 280px; background-color: #800000; border-top: 1px solid rgba(255,255,255,0.2);">
-        <x-side-navbar />
+        <x-sidebar />
     </aside>
 
     <main class="flex-grow-1 p-5 bg-white">
