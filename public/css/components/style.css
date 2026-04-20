@@ -148,3 +148,23 @@
 a {
     text-decoration: none;
 }
+
+/* Tag Styling */
+
+.tag-btn-brand {
+  color: white;
+  border-color: white;
+  background-color: transparent;
+}
+
+.tag-btn-brand:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: white !important;
+  color: white !important;
+}
+
+.btn-check:checked + .tag-btn-brand {
+  background-color: white !important;
+  border-color: white !important;
+  color: var(--brand-color) !important;
+}
