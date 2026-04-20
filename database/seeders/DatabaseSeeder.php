@@ -25,12 +25,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create_user()->create();
         User::factory()->create_guest()->create();
 
-        Category::factory(4)->sequence(
-            ['name' => 'Beatrice', 'slug' => 'beatrice'],
-            ['name' => 'Arwen', 'slug' => 'arwen'],
-            ['name' => 'Leigh', 'slug' => 'leigh'],
-            ['name' => 'Bloom Bar', 'slug' => 'bloom-bar'],
-        )->create();
+        Category::factory(4)->create();
 
         Product::factory(20)->create();
 
