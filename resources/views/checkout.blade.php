@@ -4,7 +4,7 @@
 
 @section('content')
 <div style="display: flex; max-width: 1400px; margin: 40px auto 100px auto; gap: 60px; padding: 0 40px; align-items: flex-start; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">
-    
+
     <div style="flex: 1.5; min-width: 0;">
         <h1 style="font-size: 36px; font-weight: 200; color: #700101; margin-bottom: 35px; letter-spacing: 1px;">Checkout</h1>
         <x-checkout-details />
@@ -18,7 +18,7 @@
                 <span style="margin-right: 5px;">←</span> Back to Products
             </a>
         </div>
-        <x-checkout-total />
+        <x-checkout-total :items="$items" :subtotal="$subtotal" :shipping="$shipping" :tax="$tax" :total="$total" />
     </div>
 </div>
 @endsection

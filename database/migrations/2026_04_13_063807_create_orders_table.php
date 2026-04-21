@@ -21,6 +21,15 @@ return new class extends Migration
             $table->timestamp('ordered_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
+
+        Schema::create('order_items', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('order_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('product_id')->constrained()->cascadeOnDelete();
+            $table->unsignedInteger('quantity')->default(1);
+            $table->decimal('unit_price', 10, 2);
+            $table->timestamp('created_at')->useCurrent();
+        });
     }
 
     /**
@@ -28,6 +37,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('order_items');
         Schema::dropIfExists('orders');
     }
 };

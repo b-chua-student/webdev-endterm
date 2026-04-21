@@ -1,29 +1,35 @@
+@props(['items'])
+
+@php
+    $subtotal = $items->sum(fn($item) => $item->product->price * $item->quantity);
+    $shipping = 99.99;
+    $tax = $subtotal * 0.12;
+    $total = $subtotal + $shipping + $tax;
+@endphp
+
 <div style="display: flex; flex-direction: column; width: 100%;">
     <h2 style="font-size: 36px; font-weight: 200; color: #4b5563; margin-bottom: 40px; font-family: sans-serif;">
         Cart Total
     </h2>
-
     <div style="font-style: italic; color: #6b7280; line-height: 1.8; margin-bottom: 60px;">
         <div style="display: flex; justify-content: space-between;">
             <span>Shipping</span>
-            <span>₱99.99</span>
+            <span>₱{{ number_format($shipping, 2) }}</span>
         </div>
         <div style="display: flex; justify-content: space-between;">
-            <span>Tax</span>
-            <span>₱99.99</span>
+            <span>Tax (12%)</span>
+            <span>₱{{ number_format($tax, 2) }}</span>
         </div>
         <div style="display: flex; justify-content: space-between;">
             <span>Subtotal</span>
-            <span>₱99.99</span>
+            <span>₱{{ number_format($subtotal, 2) }}</span>
         </div>
     </div>
-
     <div style="display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 30px; border-top: 1px solid #e5e7eb; margin-top: auto; padding-top: 30px;">
         <span style="font-size: 24px; font-weight: bold; color: #1f2937;">Total</span>
-        <span style="font-size: 32px; font-weight: bold; color: #700101;">₱99.99</span>
+        <span style="font-size: 32px; font-weight: bold; color: #700101;">₱{{ number_format($total, 2) }}</span>
     </div>
-
-    <form method='POST' action='{{ route('checkout') }}'>
+    <form method="POST" action="{{ route('checkout') }}">
         @csrf
         <button style="
             width: 100%;

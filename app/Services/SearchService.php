@@ -4,6 +4,7 @@ namespace App\Services;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Order;
+use App\Models\Category;
 use App\Contracts\Services\SearchServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -41,5 +42,10 @@ class SearchService implements SearchServiceInterface
     public function getOrders(string $query) : Collection
     {
         return Order::search(trim($query))->get();
+    }
+
+    public function getCategory(string $query) : Collection
+    {
+        return Category::search(trim($query))->get();
     }
 }
