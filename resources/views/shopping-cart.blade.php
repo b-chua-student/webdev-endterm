@@ -9,9 +9,9 @@
 </style>
 
 <div style="display: flex; max-width: 1400px; margin: 40px auto 100px auto; gap: 40px; padding: 0 40px; align-items: flex-start;">
-    
+
     <div style="flex: 2; min-width: 0;">
-        <x-shopping-cart-items-table />
+        <x-shopping-cart-items-table :items="$items" />
     </div>
 
     <div style="width: 1px; background-color: #d1d5db; align-self: stretch;"></div>
@@ -22,7 +22,7 @@
                 <span style="margin-right: 4px;">←</span> Back to Products
             </a>
         </div>
-        <x-shopping-cart-total />
+        <x-shopping-cart-total :items="$items" />
     </div>
 </div>
 @endsection

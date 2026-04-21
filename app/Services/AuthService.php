@@ -10,9 +10,13 @@ use App\Contracts\Services\AuthServiceInterface;
 
 class AuthService implements AuthServiceInterface
 {
-    public function loginByEmail(array $data) : bool
+    public function loginByEmail(array $credentials): bool
     {
-        return Auth::attempt($data);
+        if (Auth::attempt($credentials)) {
+            session()->regenerate();
+            return true;
+        }
+        return false;
     }
 
     public function loginByInstagram(array $data) : bool

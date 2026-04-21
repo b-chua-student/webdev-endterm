@@ -23,7 +23,10 @@ class User extends Authenticatable
         'first_name',
         'last_name',
         'email',
-        'password',
+        'instagram_account',
+        'address',
+        'role',
+        'email_verified_at',
     ];
 
     /**

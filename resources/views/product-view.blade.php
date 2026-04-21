@@ -45,9 +45,12 @@
             <p class="mb-5" style="color: #7d0a0a; font-size: 0.85rem;">{{ $product->description }}</p>
 
             <div class="d-flex gap-3 mt-auto">
-                <button class="btn py-3 rounded-1 fw-semibold" style="border: 1.5px solid #7d0a0a; color: #7d0a0a; background-color: white; font-size: 0.9rem; flex: 1;">
-                    Add to Cart
-                </button>
+                <form action="/cart/add" method="POST" class="btn py-3 rounded-1 fw-semibold" style="border: 1.5px solid #7d0a0a; color: #7d0a0a; background-color: white; font-size: 0.9rem; flex: 1;">
+                    @csrf
+                    <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <input type="number" name="quantity" value="1">
+                    <button type="submit">Add to Cart</button>
+                </form>
                 <button class="btn py-3 rounded-1 text-white fw-semibold" style="background-color: #7d0a0a; border: 1.5px solid #7d0a0a; font-size: 0.9rem; flex: 1;">
                     Order Now
                 </button>

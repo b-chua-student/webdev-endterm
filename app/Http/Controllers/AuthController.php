@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\EmailLoginRequest;
 use App\Http\Requests\EmailRegisterRequest;
 use App\Contracts\Services\AuthServiceInterface;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -25,10 +26,15 @@ class AuthController extends Controller
         $loginIsSuccess = $this->authService->loginByEmail($validatedUserCredentials);
 
         // AuthService returns a TRUE if successfully executed and FALSE otherwise
-        if ($loginIsSuccess)
+      if ($loginIsSuccess) {
+            $user = Auth::user();
+            if ($user->role === 'admin') {
+                return view('admin.dashboard.index');
+            }
             return redirect()->route('home');
-        else
-            return back()->withErrors(['invalid' => 'Invalid credentials.']);
+        }
+
+        return back()->withErrors(['invalid' => 'Invalid credentials.']);
     }
 
     public function loginAsGuest()
