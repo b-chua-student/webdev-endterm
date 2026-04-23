@@ -6,8 +6,8 @@
         <div class="d-flex">
             <a href="{{ route('home') }}" class="text-white text-decoration-none px-3 nav-link-hover">Home</a>
             <a href="{{ route('product-listing') }}" class="text-white text-decoration-none px-3 nav-link-hover">Products</a>
-            <a href="" class="text-white text-decoration-none px-3 nav-link-hover">About Us</a>
-            <a href="" class="text-white text-decoration-none px-3 nav-link-hover">FAQ</a>
+            <a href="{{ route('about-us') }}" class="text-white text-decoration-none px-3 nav-link-hover">About Us</a>
+            <a href="{{ route('faq') }}" class="text-white text-decoration-none px-3 nav-link-hover">FAQ</a>
         </div>
         <div class="d-flex align-items-center gap-3">
             <a href="{{ route('shopping-cart') }}" class="cart-icon-hover">

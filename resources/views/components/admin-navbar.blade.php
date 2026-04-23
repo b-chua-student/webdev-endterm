@@ -3,6 +3,9 @@
         <img src="{{ asset('img/bethebeau-horizontal.png') }}" alt="Logo" class="w-100">
     </div>
     <div class="d-flex flex-column p-3 gap-1">
+        <a href="{{ route('admin.dashboard.index') }}" class="admin-nav-link">
+            <i class="bi bi-tags me-2"></i> Dashboard
+        </a>
         <a href="{{ route('test-admin-user') }}" class="admin-nav-link">
             <i class="bi bi-people me-2"></i> User Management
         </a>
@@ -11,9 +14,6 @@
         </a>
         <a href="{{ route('test-admin-order') }}" class="admin-nav-link">
             <i class="bi bi-receipt me-2"></i> Order Management
-        </a>
-        <a href="{{ route('test-admin-category') }}" class="admin-nav-link">
-            <i class="bi bi-tags me-2"></i> Category Management
         </a>
     </div>
 </nav>

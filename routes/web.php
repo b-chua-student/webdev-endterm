@@ -7,6 +7,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -92,10 +94,13 @@ Route::get('test-admin-category', [SearchController::class, 'index'])
 
 Route::resource('users', UserController::class);
 Route::resource('products', ProductController::class);
-// Route::resource('orders', OrderController::class);
+Route::resource('orders', OrderController::class);
 // Route::resource('categories', CategoryController::class);
 
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::delete('/cart/item/{id}', [CartController::class, 'remove'])->name('cart.remove')->middleware('auth');
 
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard.index')->middleware('auth');
+
+Route::get('about-us', fn () => view('about-us'))->name('about-us');
+Route::get('faq', fn () => view('faq'))->name('faq');

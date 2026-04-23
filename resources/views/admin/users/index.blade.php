@@ -5,7 +5,7 @@
     <div class="d-flex flex-column bg-brand text-white" style="width: 260px; flex-shrink: 0;">
         <x-admin-navbar />
     </div>
-    <div class="flex-grow-1 p-5 bg-light">
+    <div class="flex-grow-1 p-5 bg-light" style="min-width: 0;">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <p class="display-6 text-brand fw-bold m-0">User Management</p>
             <a href="{{ route('users.create') }}" class="btn text-white fw-semibold"
